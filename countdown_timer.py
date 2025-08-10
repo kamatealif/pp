@@ -41,7 +41,7 @@ def remaining_time(seconds):
     # play a beep sound 
     if platform.system() == "Windows":
         import winsound
-        winsound.Beep(4000, 1000) # 1000hz frequency for 1000 ms
+        winsound.Beep(4500, 1000) # 4500hz frequency for 1000 ms
     elif platform.system() == "Linux":
         os.system("beep -f 1000 -l 1000") # linux based systems
     else:
