@@ -24,6 +24,8 @@ Bonus:
 
 ## how to run file
 
+first make sure to make an account at `https://home.openweathermap.org/` and create your api
+
 ```bash
 pip install uv
 ```
@@ -33,6 +35,8 @@ install all the required dependencies
 ```bash
 uv sync
 ```
+
+create a .env file and inside .env add one var `API_KEY=<YOUR_API_KEY>`
 
 Run the Script:
 
