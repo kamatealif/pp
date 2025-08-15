@@ -1,0 +1,21 @@
+id,name,location,age,is_active
+1,John Doe,New York,25,True
+2,Jane Smith,Washington,30,False
+3,Bob Johnson,Chicago,40,True
+4,Sarah Brown,Los Angeles,28,False
+5,Mike Davis,San Francisco,35,True
+6,Emily Wilson,Houston,22,False
+7,David Lee,Dallas,45,True
+8,Lisa Thompson,Philadelphia,32,False
+9,Robert Clark,Boston,27,True
+10,Susan Miller,New Orleans,41,False
+11,Matt Johnson,Miami,38,True
+12,Jessica Davis,Seattle,20,False
+13,William Anderson,Atlanta,43,True
+14,Christina Thompson,Detroit,29,False
+15,Roger Clark,Phoenix,36,True
+16,Janet Wilson,San Diego,34,False
+17,Michael Smith,Portland,39,True
+18,Sandra Thompson,Tampa,23,False
+19,David Lee,Orlando,42,True
+20,Jennifer Brown,Jacksonville,31,False
