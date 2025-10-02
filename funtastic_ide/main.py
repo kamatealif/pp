@@ -1,7 +1,6 @@
 from tkinter import * 
 from tkinter.filedialog import asksaveasfilename, askopenfilename
 from tkinter import messagebox
-
 import subprocess
 
 
@@ -45,8 +44,6 @@ def open_file():
         set_file_path(path)
 
 
-def save_file():
-    pass
 
 def save_as():
     if file_path == '':
@@ -56,6 +53,7 @@ def save_as():
     with open(path, 'w') as file:
         code = editor.get("1.0", END)
         file.write(code)
+
 
 # creating file menu 
 file_menu = Menu(menu_bar )
@@ -70,12 +68,10 @@ menu_bar.add_cascade(label='Run', menu=run_bar)
 compilor.config(menu=menu_bar)
 
 
-editor  = Text()
-editor.pack()
+editor  = Text( wrap='word', font=('JetBrains Mono', 12))
+editor.pack(expand=True, fill='both')
 
 
-# code execute box 
-code_output = Text(height=10)
+code_output = Text(height=10, wrap='word', font=('Fira Code', 12))
 code_output.pack()
-
 compilor.mainloop()
