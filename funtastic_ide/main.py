@@ -1,4 +1,6 @@
 from tkinter import * 
+from tkinter.filedialog import asksaveasfilename, askopenfilename
+
 
 def run_code():
     code = editor.get("1.0", END)
@@ -17,15 +19,21 @@ def create_new_file():
 
 
 def open_file():
-    pass
+    path = askopenfilename(filetypes=[("Python Files", "*.py"),("javascript files", "*.js"),("html files", "*.html"),("css files", "*.css")]);
+    with open(path, 'r') as file:
+        code = file.read()
+        editor.delete("1.0", END)
+        editor.insert("1.0", code)
 
 
 def save_file():
     pass
 
 def save_as():
-    pass
-
+    path = asksaveasfilename(defaultextension=".py", filetypes=[("Python Files", "*.py"),("javascript files", "*.js"),("html files", "*.html"),("css files", "*.css")])
+    with open(path, 'w') as file:
+        code = editor.get("1.0", END)
+        file.write(code)
 
 # creating file menu 
 file_menu = Menu(menu_bar )
