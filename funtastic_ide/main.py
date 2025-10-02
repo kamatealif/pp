@@ -1,11 +1,29 @@
 from tkinter import * 
 from tkinter.filedialog import asksaveasfilename, askopenfilename
+from tkinter import messagebox
 
+import subprocess
+
+
+#global file path 
+file_path = ''
+
+# function for storing the file path 
+def set_file_path(path):
+    global file_path 
+    file_path = path
 
 def run_code():
-    code = editor.get("1.0", END)
-    exec(code)
-
+    if file_path == '':
+        messagebox.showerror("Error", "Please save the file first")
+        return 
+    command = f"python3 {file_path}"
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output, err = process.communicate()
+    
+    code_output.insert("1.0", output)
+    code_output.insert("1.0", err)
+    
 compilor = Tk()
 compilor.title("Funtastic IDE")
 
@@ -24,13 +42,17 @@ def open_file():
         code = file.read()
         editor.delete("1.0", END)
         editor.insert("1.0", code)
+        set_file_path(path)
 
 
 def save_file():
     pass
 
 def save_as():
-    path = asksaveasfilename(defaultextension=".py", filetypes=[("Python Files", "*.py"),("javascript files", "*.js"),("html files", "*.html"),("css files", "*.css")])
+    if file_path == '':
+        path = asksaveasfilename(defaultextension=".py", filetypes=[("Python Files", "*.py"),("javascript files", "*.js"),("html files", "*.html"),("css files", "*.css")])
+    else:
+        path = file_path
     with open(path, 'w') as file:
         code = editor.get("1.0", END)
         file.write(code)
@@ -39,7 +61,7 @@ def save_as():
 file_menu = Menu(menu_bar )
 file_menu.add_command(label="New", command=create_new_file)
 file_menu.add_command(label="Open", command=open_file)
-file_menu.add_command(label="Save", command=save_file)
+file_menu.add_command(label="Save", command=save_as)
 file_menu.add_command(label="Save As", command=save_as)
 file_menu.add_separator()
 file_menu.add_command(label="Exit", command=compilor.quit)
@@ -51,5 +73,9 @@ compilor.config(menu=menu_bar)
 editor  = Text()
 editor.pack()
 
+
+# code execute box 
+code_output = Text(height=10)
+code_output.pack()
 
 compilor.mainloop()
